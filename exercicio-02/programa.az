@@ -1,0 +1,26 @@
+$testeDeComentario
+
+INICIO
+
+int a
+float b
+string c
+
+output('testeDeInputA') $outroComentario
+input(&a)
+output('testeDeInputB')
+input(&b)
+
+c = a + b - a * b / c
+
+output(&c)
+
+while(false)
+    if(true)
+        output('IssoEhVdd')
+    else
+        output('IssoNaoEhVdd')
+
+naoComentario
+
+FIM
