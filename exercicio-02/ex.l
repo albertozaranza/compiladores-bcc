@@ -2,7 +2,7 @@
 
 %}
 
-COMENTARIO "$"
+COMENTARIO "$"([a-zA-Z]|" ")+
 
 INT "int"
 FLOAT "float"
@@ -32,7 +32,7 @@ ESPACO " "
 
 %%
 
-{COMENTARIO}{PALAVRA} {
+{COMENTARIO} {
     printf ("Comentário: %s\n", yytext);
 }
 {INICIO} {
