@@ -45,10 +45,13 @@ program:
 
 statement: 
    exp {
-      if(erro == 0) {
-         printf("\nResultado: %.2f\n", $1);
-      } else {
-         printf("\nVariável não declarada\n");
+      switch (erro) {
+         case 1:
+            printf("\nVariável não declarada\n");
+            erro = 0;
+            break;
+         default:
+             printf("\nResultado: %.2f\n", $1);
       }
    } |
    DECLARACAO VAR	{

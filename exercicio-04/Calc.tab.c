@@ -445,8 +445,8 @@ static const yytype_uint8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    44,    44,    44,    47,    54,    58,    69,    70,    71,
-      72,    73,    74,    75,    76,    77
+       0,    44,    44,    44,    47,    57,    61,    72,    73,    74,
+      75,    76,    77,    78,    79,    80
 };
 #endif
 
@@ -1232,26 +1232,29 @@ yyreduce:
         case 4:
 #line 47 "Calc.y" /* yacc.c:1646  */
     {
-      if(erro == 0) {
-         printf("\nResultado: %.2f\n", (yyvsp[0].vfloat));
-      } else {
-         printf("\nVariável não declarada\n");
+      switch (erro) {
+         case 1:
+            printf("\nVariável não declarada\n");
+            erro = 0;
+            break;
+         default:
+             printf("\nResultado: %.2f\n", (yyvsp[0].vfloat));
       }
    }
-#line 1242 "Calc.tab.c" /* yacc.c:1646  */
+#line 1245 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
-#line 54 "Calc.y" /* yacc.c:1646  */
+#line 57 "Calc.y" /* yacc.c:1646  */
     {
       strcpy(todas[qntd].nome,(yyvsp[0].str));
       qntd++;
    }
-#line 1251 "Calc.tab.c" /* yacc.c:1646  */
+#line 1254 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
-#line 58 "Calc.y" /* yacc.c:1646  */
+#line 61 "Calc.y" /* yacc.c:1646  */
     {
       for(i=0;i<qntd;i++){
          if(strcmp(todas[i].nome,(yyvsp[-2].str))==0){
@@ -1261,53 +1264,53 @@ yyreduce:
          }
       }
    }
-#line 1265 "Calc.tab.c" /* yacc.c:1646  */
+#line 1268 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
-#line 69 "Calc.y" /* yacc.c:1646  */
+#line 72 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = (yyvsp[-2].vfloat) + (yyvsp[0].vfloat);}
-#line 1271 "Calc.tab.c" /* yacc.c:1646  */
+#line 1274 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
-#line 70 "Calc.y" /* yacc.c:1646  */
+#line 73 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = (yyvsp[-2].vfloat) - (yyvsp[0].vfloat);}
-#line 1277 "Calc.tab.c" /* yacc.c:1646  */
+#line 1280 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
-#line 71 "Calc.y" /* yacc.c:1646  */
+#line 74 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = (yyvsp[-2].vfloat) / (yyvsp[0].vfloat);}
-#line 1283 "Calc.tab.c" /* yacc.c:1646  */
+#line 1286 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
-#line 72 "Calc.y" /* yacc.c:1646  */
+#line 75 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = (yyvsp[-2].vfloat) * (yyvsp[0].vfloat);}
-#line 1289 "Calc.tab.c" /* yacc.c:1646  */
+#line 1292 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
-#line 73 "Calc.y" /* yacc.c:1646  */
+#line 76 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = pow((yyvsp[-2].vfloat), (yyvsp[0].vfloat));}
-#line 1295 "Calc.tab.c" /* yacc.c:1646  */
+#line 1298 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
-#line 74 "Calc.y" /* yacc.c:1646  */
+#line 77 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = (yyvsp[-1].vfloat);}
-#line 1301 "Calc.tab.c" /* yacc.c:1646  */
+#line 1304 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
-#line 75 "Calc.y" /* yacc.c:1646  */
+#line 78 "Calc.y" /* yacc.c:1646  */
     {(yyval.vfloat) = -(yyvsp[0].vfloat);}
-#line 1307 "Calc.tab.c" /* yacc.c:1646  */
+#line 1310 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
   case 15:
-#line 77 "Calc.y" /* yacc.c:1646  */
+#line 80 "Calc.y" /* yacc.c:1646  */
     {
       int encontrou = 0;
       for(i=0;i<qntd;i++){
@@ -1321,11 +1324,11 @@ yyreduce:
          erro = 1;
       }
    }
-#line 1325 "Calc.tab.c" /* yacc.c:1646  */
+#line 1328 "Calc.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1329 "Calc.tab.c" /* yacc.c:1646  */
+#line 1332 "Calc.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires
@@ -1553,7 +1556,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 91 "Calc.y" /* yacc.c:1906  */
+#line 94 "Calc.y" /* yacc.c:1906  */
 
 
 #include "lex.yy.c"
