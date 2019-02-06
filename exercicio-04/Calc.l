@@ -1,19 +1,22 @@
 %{
-
+#include<string.h>
 %}
 
-NUM [0-9]+
+NUM [0-9]*\.?[0-9]+
 VAR [a-z]+
 
 %%
 
 {VAR} {
-    yylval = *yytext - 'a';
+    strcpy(yylval.str,yytext);
     return (VAR);
 }
 {NUM} {
-    yylval = atoi(yytext); 
+    yylval.vfloat = atof(yytext); 
     return (NUM);
+}
+"VAR" {
+    return DECLARACAO;
 }
 "=" {
     return '=';
@@ -38,9 +41,6 @@ VAR [a-z]+
 }
 "^" {
     return '^';
-}
-"@" {
-    return '@';
 }
 "\n" {
     return '\n';
